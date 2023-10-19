@@ -176,7 +176,7 @@ sdk.set_access_token(getenv("LLAMASTORE_ACCESS_TOKEN"))
 request_body = {}
 results = sdk.llama_picture.create_llama_picture(
 	request_input = request_body,
-	llama_id = 1
+	llama_id = 2
 )
 
 pprint(vars(results))
@@ -204,7 +204,7 @@ from pprint import pprint
 from llamastore import Llamastore
 sdk = Llamastore()
 sdk.set_access_token(getenv("LLAMASTORE_ACCESS_TOKEN"))
-results = sdk.llama_picture.get_llama_picture_by_llama_id(llama_id = 2)
+results = sdk.llama_picture.get_llama_picture_by_llama_id(llama_id = 1)
 
 pprint(vars(results))
 
@@ -231,7 +231,7 @@ from pprint import pprint
 from llamastore import Llamastore
 sdk = Llamastore()
 sdk.set_access_token(getenv("LLAMASTORE_ACCESS_TOKEN"))
-results = sdk.llama_picture.delete_llama_picture(llama_id = 2)
+results = sdk.llama_picture.delete_llama_picture(llama_id = 1)
 
 pprint(vars(results))
 
@@ -262,7 +262,7 @@ sdk.set_access_token(getenv("LLAMASTORE_ACCESS_TOKEN"))
 request_body = {}
 results = sdk.llama_picture.update_llama_picture(
 	request_input = request_body,
-	llama_id = 1
+	llama_id = 2
 )
 
 pprint(vars(results))
@@ -350,7 +350,7 @@ from pprint import pprint
 from llamastore import Llamastore
 sdk = Llamastore()
 sdk.set_access_token(getenv("LLAMASTORE_ACCESS_TOKEN"))
-results = sdk.llama.get_llama_by_id(llama_id = 1)
+results = sdk.llama.get_llama_by_id(llama_id = 2)
 
 pprint(vars(results))
 
@@ -377,7 +377,7 @@ from pprint import pprint
 from llamastore import Llamastore
 sdk = Llamastore()
 sdk.set_access_token(getenv("LLAMASTORE_ACCESS_TOKEN"))
-results = sdk.llama.delete_llama(llama_id = 1)
+results = sdk.llama.delete_llama(llama_id = 2)
 
 pprint(vars(results))
 
@@ -474,7 +474,7 @@ from pprint import pprint
 from llamastore import Llamastore
 sdk = Llamastore()
 sdk.set_access_token(getenv("LLAMASTORE_ACCESS_TOKEN"))
-results = sdk.user.get_user_by_email(email = 'tIAimCb@N.sUaR].pV')
+results = sdk.user.get_user_by_email(email = '_Ij;Y2Z@O05c$#^.0BvbN')
 
 pprint(vars(results))
 

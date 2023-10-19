@@ -9,13 +9,13 @@ class TestApiTokenRequestModel(unittest.TestCase):
     def test_api_token_request(self):
         # Create ApiTokenRequest class instance
         test_model = ApiTokenRequest(
-            password="animi",
-            email="(}e8g;8rL7 |=s3T_?CH3?!vD92nTD}dI*t@5NIj.\\aR/i~`f=dtnMutbO_\\UyxIl*i~Gpq:Xg#~;a,`?fgd8>X3\\~Qi.DzW?G?;?1XjVRDZn7qo$!@[CA!EJK('0Xd{LS^6\"<0^(a^chR%6w^&ZJzjx&CK6+YA",
+            password="perferendis",
+            email="CT\\lYzFc2`6S67D?UR@!M`$|XU~2rgQLSs@h(a=& X%yXa7GXK%Bw#2 gtqw#*6 3%g7Nmq!W+5CK)Tp06X,QxS=^-5tsV=X TO8~;J7(f7[|QZNv~W.RBSFFLg=9~(|L}=yqBs|ux8&",
         )
-        self.assertEqual(test_model.password, "animi")
+        self.assertEqual(test_model.password, "perferendis")
         self.assertEqual(
             test_model.email,
-            "(}e8g;8rL7 |=s3T_?CH3?!vD92nTD}dI*t@5NIj.\\aR/i~`f=dtnMutbO_\\UyxIl*i~Gpq:Xg#~;a,`?fgd8>X3\\~Qi.DzW?G?;?1XjVRDZn7qo$!@[CA!EJK('0Xd{LS^6\"<0^(a^chR%6w^&ZJzjx&CK6+YA",
+            "CT\\lYzFc2`6S67D?UR@!M`$|XU~2rgQLSs@h(a=& X%yXa7GXK%Bw#2 gtqw#*6 3%g7Nmq!W+5CK)Tp06X,QxS=^-5tsV=X TO8~;J7(f7[|QZNv~W.RBSFFLg=9~(|L}=yqBs|ux8&",
         )
 
     def test_api_token_request_required_fields_missing(self):

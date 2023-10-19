@@ -8,9 +8,9 @@ class TestApiTokenModel(unittest.TestCase):
 
     def test_api_token(self):
         # Create ApiToken class instance
-        test_model = ApiToken(access_token="eos", token_type="porro")
-        self.assertEqual(test_model.access_token, "eos")
-        self.assertEqual(test_model.token_type, "porro")
+        test_model = ApiToken(access_token="et", token_type="occaecati")
+        self.assertEqual(test_model.access_token, "et")
+        self.assertEqual(test_model.token_type, "occaecati")
 
     def test_api_token_required_fields_missing(self):
         # Assert ApiToken class generation fails without required fields
