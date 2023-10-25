@@ -13,9 +13,12 @@ class LlamaCreate(BaseModel):
         Parameters:
         ----------
             rating: int
+                The rating of the llama from 1 to 5.
             color: LlamaColor
             age: int
+                The age of the llama in years.
             name: str
+                The name of the llama. This must be unique across all llamas.
         """
         self.rating = rating
         self.color = self._enum_matching(color, LlamaColor.list(), "color")
