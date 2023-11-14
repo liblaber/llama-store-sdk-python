@@ -2,20 +2,18 @@
 
 A list of all models.
 - [GetLlamasResponse](#getllamasresponse)
-- [ApiToken](#apitoken)
-- [ApiTokenRequest](#apitokenrequest)
+- [LlamaId](#llamaid)
 - [Llama](#llama)
 - [LlamaColor](#llamacolor)
 - [LlamaCreate](#llamacreate)
-- [LlamaId](#llamaid)
+- [ApiTokenRequest](#apitokenrequest)
+- [ApiToken](#apitoken)
 - [User](#user)
 - [UserRegistration](#userregistration)
 
 ## GetLlamasResponse
 
-## ApiToken
-
-## ApiTokenRequest
+## LlamaId
 
 ## Llama
 
@@ -23,7 +21,9 @@ A list of all models.
 
 ## LlamaCreate
 
-## LlamaId
+## ApiTokenRequest
+
+## ApiToken
 
 ## User
 

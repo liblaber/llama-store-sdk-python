@@ -15,10 +15,14 @@ class Llama(BaseModel):
         Parameters:
         ----------
             id: int
+                The ID of the llama.
             rating: int
+                The rating of the llama from 1 to 5.
             color: LlamaColor
             age: int
+                The age of the llama in years.
             name: str
+                The name of the llama. This must be unique across all llamas.
         """
         self.id = id
         self.rating = rating

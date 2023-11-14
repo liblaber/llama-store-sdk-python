@@ -13,14 +13,14 @@ class TestUser_(unittest.TestCase):
     def test_get_user_by_email(self):
         # Mock the API response
         responses.get(
-            'http://localhost:8000/user/ZSE4%:SX?336qK@1B4/-ffLtkh+7m"4j5K1n{f<H)o|~I~-H;9ZX3YK0B\\BjFK6%+ZOjKd$^2CTb];%`Mc"CI${$o4M@E#Q\\6t3s$jAj4:WR9TTNa\'1PGfY3~j!b9:x.KZsW2)v',
+            "http://localhost:8000/user/_\\{<G@KG(xg|#8)Dg*9}gd]oTRx'(d/)Nv <nxCN|M^+Nt(4eyhq.M-3tNW`0",
             json={},
             status=200,
         )
         # call the method to test
         test_service = User("testkey")
         response = test_service.get_user_by_email(
-            'ZSE4%:SX?336qK@1B4/-ffLtkh+7m"4j5K1n{f<H)o|~I~-H;9ZX3YK0B\\BjFK6%+ZOjKd$^2CTb];%`Mc"CI${$o4M@E#Q\\6t3s$jAj4:WR9TTNa\'1PGfY3~j!b9:x.KZsW2)v'
+            "_\\{<G@KG(xg|#8)Dg*9}gd]oTRx'(d/)Nv <nxCN|M^+Nt(4eyhq.M-3tNW`0"
         )
         self.assertEqual(response, {})
         responses.reset(),
@@ -29,7 +29,7 @@ class TestUser_(unittest.TestCase):
     def test_get_user_by_email_required_fields_missing(self):
         # Mock the API response
         responses.get(
-            "http://localhost:8000/user/O<{Ig?DVYV7lz_.eus,PVx<oL8!A{cL;LUAeivT+uI2<T2N/L<Vveud`jMf`U,%UFc5&?F9UZuhe*^T< @sU[G,'!\">]0Y6z+N*d]M;x=hgbCxi^S)H1S.]viU,-rdSyB+X\\qI?5+]fLoO/1|;\\%dny\\-zFid*O3",
+            "http://localhost:8000/user/SQ=.rqBE1lE@n\\&'4NX'w7\\dx?caU@Mn+X`gwymi;< ZK~ 5HQ8M\\wO}fnQZ]=obw|v9~'O&x\\\"F|$sJASv7/,g/`K`/qhG-k2nR`5%+Kfk.X~HLDb;k*FW*;k)R2YnjO\\cv`d0PbQ:R~oPE+[;+mdL1\\A,>-kBKVFr6Eb4S/{!!;\"(}Z*tUdPy3hhL\"?0>;",
             json={},
             status=202,
         )
@@ -42,14 +42,14 @@ class TestUser_(unittest.TestCase):
     def test_get_user_by_email_error_on_non_200(self):
         # Mock the API response
         responses.get(
-            'http://localhost:8000/user/~jB"q6vYt!DhxoaS1ZLnHeYK\\XIo,$[FHc"1[[C1E@$5{?eohK7&?>=;0q^bJ5D8LQ!_Q6n/4FRcY 6MrPI\\0!a0zv<`O~;)_AE#HyzOKrmnvv-@d5nI`O.4&Tx* ,e./user/P2D:~P3(c=]bG{V "@/d;%{fXfqy)Ct`Cyd>%tPq+)pxYz}jc46_>+hkZp ++%2,+f%h8s#`Ke[Q_|y[',
+            'http://localhost:8000/user/Yx7pH:MXuQ2:7y \\Zp6[)&g~3wpe}NJ8+5}8wB1L_>|zgBDVqx8XIQ}:\'P/DXTmuI%K)xHX%cM{|PbwG$bV=\\f&:;/pSH@3d1KDAh!Rh7-J(o(S_>S/M,CSLP]YoP?rZ`\\f!{>OKofe zyp)Zn(CKWbG})xM2f-XI08P<9_ B$nd"gy~%m3HBLYAH|[fO:P.;YH5|=xwm_R}&3tPIdk`CG*M\\BG+y,&(\\YBl#j(EFKPu-]rzbk4*THQ)z{cMyn2f|8n}S`4p@AcKf`?cCvF\\uvfEky"L$',
             json={},
             status=404,
         )
         with self.assertRaises(ClientException):
             test_service = User("testkey")
             test_service.get_user_by_email(
-                '~jB"q6vYt!DhxoaS1ZLnHeYK\\XIo,$[FHc"1[[C1E@$5{?eohK7&?>=;0q^bJ5D8LQ!_Q6n/4FRcY 6MrPI\\0!a0zv<`O~;)_AE#HyzOKrmnvv-@d5nI`O.4&Tx* ,e.$`P2D:~P3(c=]bG{V "@/d;%{fXfqy)Ct`Cyd>%tPq+)pxYz}jc46_>+hkZp ++%2,+f%h8s#`Ke[Q_|y['
+                'Yx7pH:MXuQ2:7y \\Zp6[)&g~3wpe}NJ8+5}8wB1L_>|zgBDVqx8XIQ}:\'P/DXTmuI%K)xHX%cM{|PbwG$bV=\\f&:;/pSH@3d1KDAh!Rh7-J(o(S_>S/M,CSLP]YoP?rZ`\\f!{>OKofe zyp)Zn(CKWbG})xM2f-XI08P<9_ B$nd"gy~%m3HBLYAH|[fO:P.;YH5|=xwm_R}&3tPIdk`CG*M\\BG+y,&(\\YBl#j(EFKPu-]rzbk4*THQ)z{cMyn2f|8n}S`4p@AcKf`?cCvF\\uvfEky"L$'
             )
         responses.reset()
 
