@@ -1,9 +1,13 @@
 from typing import Any, Dict, List
+from enum import Enum
 
 explode = bool
 
 
 def simple(value: Any, explode: bool) -> str:
+    if isinstance(value, Enum):
+        return str(value.value)
+
     # Check if the value is a list
     if isinstance(value, list):
         return ",".join(value) if explode else "".join(value)

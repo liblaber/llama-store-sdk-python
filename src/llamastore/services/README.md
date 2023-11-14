@@ -133,7 +133,7 @@ from pprint import pprint
 from llamastore import Llamastore
 sdk = Llamastore()
 sdk.set_access_token(getenv("LLAMASTORE_ACCESS_TOKEN"))
-results = sdk.llama_picture.delete_llama_picture(llama_id = 2)
+results = sdk.llama_picture.delete_llama_picture(llama_id = 1)
 
 pprint(vars(results))
 
@@ -164,7 +164,7 @@ sdk.set_access_token(getenv("LLAMASTORE_ACCESS_TOKEN"))
 request_body = {}
 results = sdk.llama_picture.update_llama_picture(
 	request_input = request_body,
-	llama_id = 1
+	llama_id = 2
 )
 
 pprint(vars(results))
@@ -376,7 +376,7 @@ from pprint import pprint
 from llamastore import Llamastore
 sdk = Llamastore()
 sdk.set_access_token(getenv("LLAMASTORE_ACCESS_TOKEN"))
-results = sdk.user.get_user_by_email(email = 'tIAimCb@N.sUaR].pV')
+results = sdk.user.get_user_by_email(email = 'bU>&:Q@f'3e?>g.QC.AY')
 
 pprint(vars(results))
 

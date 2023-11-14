@@ -6,8 +6,9 @@ Class:
     Llamastore
 """
 from .net.environment import Environment
-from .services.llama_picture import LlamaPicture
+
 from .services.llama import Llama
+from .services.llama_picture import LlamaPicture
 from .services.token import Token
 from .services.user import User
 
@@ -18,8 +19,8 @@ class Llamastore:
 
     Attributes
     ----------
-    llama_picture : LlamaPicture
     llama : Llama
+    llama_picture : LlamaPicture
     token : Token
     user : User
 
@@ -41,8 +42,8 @@ class Llamastore:
         access_token : str
             The access token
         """
-        self.llama_picture = LlamaPicture(access_token)
         self.llama = Llama(access_token)
+        self.llama_picture = LlamaPicture(access_token)
         self.token = Token(access_token)
         self.user = User(access_token)
 
@@ -57,8 +58,8 @@ class Llamastore:
             url:
                 The end URL
         """
-        self.llama_picture.set_base_url(url)
         self.llama.set_base_url(url)
+        self.llama_picture.set_base_url(url)
         self.token.set_base_url(url)
         self.user.set_base_url(url)
 
@@ -71,7 +72,7 @@ class Llamastore:
         token: string
             Auth token value
         """
-        self.llama_picture.set_access_token(token)
         self.llama.set_access_token(token)
+        self.llama_picture.set_access_token(token)
         self.token.set_access_token(token)
         self.user.set_access_token(token)

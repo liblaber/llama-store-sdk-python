@@ -12,5 +12,6 @@ class LlamaId(BaseModel):
         Parameters:
         ----------
             id: int
+                The ID of the llama.
         """
         self.id = id

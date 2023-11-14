@@ -12,7 +12,9 @@ class User(BaseModel):
         Parameters:
         ----------
             id: int
+                The ID of the user. This is unique across all users.
             email: str
+                The email address of the user. This must be unique across all users.
         """
         self.id = id
         self.email = self._pattern_matching(email, ".+\@.+\..+", "email")
