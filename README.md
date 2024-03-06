@@ -1,10 +1,10 @@
-# Llamastore Python SDK 0.0.1
+# Llamastore Python SDK 0.0.3
 A Python SDK for Llamastore.
 
 The llama store API! Get details on all your favorite llamas.  ## To use this API  - You will need to register a user, once done you can request an API token. - You can then use your API token to get details about the llamas.  ## User registration  To register a user, send a POST request to `/user` with the following body:      ```json {      email :  <your email> ,      password :  <your password>  } ``` This API has a maximum of 1000 current users. Once this is exceeded, older users will be deleted. If your user is deleted, you will need to register again. ## Get an API token  To get an API token, send a POST request to `/token` with the following body:      ```json {      email :  <your email> ,      password :  <your password>  } ```  This will return a token that you can use to authenticate with the API:  ```json {    access_token :  <your new token> ,    token_type :  bearer  } ```  ## Use the API token  To use the API token, add it to the `Authorization` header of your request:  ``` Authorization: Bearer <your token> ```   
 
-- API version: 0.0.1
-- SDK version: 0.0.1
+- API version: 0.0.3
+- SDK version: 0.0.3
 
 ## Table of Contents
 - [Requirements](#requirements)
@@ -58,7 +58,7 @@ sdk.llama.set_access_token('YOUR_BEARER_TOKEN')
 
 ## API Endpoint Services
 
-All URIs are relative to http://localhost:8000.
+All URIs are relative to http://localhost:8080.
 
 Click the service name for a full list of the service methods.
 
@@ -231,7 +231,7 @@ from pprint import pprint
 from llamastore import Llamastore
 sdk = Llamastore()
 sdk.set_access_token(getenv("LLAMASTORE_ACCESS_TOKEN"))
-results = sdk.llama_picture.delete_llama_picture(llama_id = 2)
+results = sdk.llama_picture.delete_llama_picture(llama_id = 1)
 
 pprint(vars(results))
 
@@ -262,7 +262,7 @@ sdk.set_access_token(getenv("LLAMASTORE_ACCESS_TOKEN"))
 request_body = {}
 results = sdk.llama_picture.update_llama_picture(
 	request_input = request_body,
-	llama_id = 1
+	llama_id = 2
 )
 
 pprint(vars(results))
@@ -278,7 +278,7 @@ Create Llama
 **Parameters**
 | Name    | Type| Required | Description |
 | :-------- | :----------| :----------| :----------| 
-| request_input | [LlamaCreate](/src/llamastore/models/README.md#llamacreate) | Required | Request body. |
+| request_input | [CreateLlamaRequest](/src/llamastore/models/README.md#createllamarequest) | Required | Request body. |
 
 **Return Type**
 
@@ -350,7 +350,7 @@ from pprint import pprint
 from llamastore import Llamastore
 sdk = Llamastore()
 sdk.set_access_token(getenv("LLAMASTORE_ACCESS_TOKEN"))
-results = sdk.llama.get_llama_by_id(llama_id = 1)
+results = sdk.llama.get_llama_by_id(llama_id = 2)
 
 pprint(vars(results))
 
@@ -377,7 +377,7 @@ from pprint import pprint
 from llamastore import Llamastore
 sdk = Llamastore()
 sdk.set_access_token(getenv("LLAMASTORE_ACCESS_TOKEN"))
-results = sdk.llama.delete_llama(llama_id = 1)
+results = sdk.llama.delete_llama(llama_id = 2)
 
 pprint(vars(results))
 
@@ -392,7 +392,7 @@ Update Llama
 | Name    | Type| Required | Description |
 | :-------- | :----------| :----------| :----------| 
 | llama_id | int | Required | The llama's ID |
-| request_input | [LlamaCreate](/src/llamastore/models/README.md#llamacreate) | Required | Request body. |
+| request_input | [UpdateLlamaRequest](/src/llamastore/models/README.md#updatellamarequest) | Required | Request body. |
 
 **Return Type**
 
@@ -429,7 +429,7 @@ Create Api Token
 **Parameters**
 | Name    | Type| Required | Description |
 | :-------- | :----------| :----------| :----------| 
-| request_input | [ApiTokenRequest](/src/llamastore/models/README.md#apitokenrequest) | Required | Request body. |
+| request_input | [CreateApiTokenRequest](/src/llamastore/models/README.md#createapitokenrequest) | Required | Request body. |
 
 **Return Type**
 
@@ -474,7 +474,7 @@ from pprint import pprint
 from llamastore import Llamastore
 sdk = Llamastore()
 sdk.set_access_token(getenv("LLAMASTORE_ACCESS_TOKEN"))
-results = sdk.user.get_user_by_email(email = 'tIAimCb@N.sUaR].pV')
+results = sdk.user.get_user_by_email(email = '@@X`.I5>3rbU6+\')
 
 pprint(vars(results))
 
@@ -488,7 +488,7 @@ Register User
 **Parameters**
 | Name    | Type| Required | Description |
 | :-------- | :----------| :----------| :----------| 
-| request_input | [UserRegistration](/src/llamastore/models/README.md#userregistration) | Required | Request body. |
+| request_input | [RegisterUserRequest](/src/llamastore/models/README.md#registeruserrequest) | Required | Request body. |
 
 **Return Type**
 

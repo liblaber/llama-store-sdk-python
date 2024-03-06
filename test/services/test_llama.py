@@ -3,6 +3,7 @@ import responses
 from src.llamastore.net.http_client import HTTPClient
 from http_exceptions import ClientException
 from src.llamastore.services.llama import Llama
+from src.llamastore.hooks.hook import CustomHook
 
 
 class TestLlama_(unittest.TestCase):
@@ -12,7 +13,7 @@ class TestLlama_(unittest.TestCase):
     @responses.activate
     def test_get_llamas(self):
         # Mock the API response
-        responses.get("http://localhost:8000/llama", json={}, status=200)
+        responses.get("http://localhost:8080/llama", json={}, status=200)
         # call the method to test
         test_service = Llama("testkey")
         response = test_service.get_llamas()
@@ -22,7 +23,7 @@ class TestLlama_(unittest.TestCase):
     @responses.activate
     def test_get_llamas_error_on_non_200(self):
         # Mock the API response
-        responses.get("http://localhost:8000/llama", json={}, status=404)
+        responses.get("http://localhost:8080/llama", json={}, status=404)
         with self.assertRaises(ClientException):
             test_service = Llama("testkey")
             test_service.get_llamas()
@@ -31,7 +32,7 @@ class TestLlama_(unittest.TestCase):
     @responses.activate
     def test_create_llama(self):
         # Mock the API response
-        responses.post("http://localhost:8000/llama", json={}, status=200)
+        responses.post("http://localhost:8080/llama", json={}, status=200)
         # call the method to test
         test_service = Llama("testkey")
         response = test_service.create_llama({})
@@ -41,7 +42,7 @@ class TestLlama_(unittest.TestCase):
     @responses.activate
     def test_create_llama_error_on_non_200(self):
         # Mock the API response
-        responses.post("http://localhost:8000/llama", json={}, status=404)
+        responses.post("http://localhost:8080/llama", json={}, status=404)
         with self.assertRaises(ClientException):
             test_service = Llama("testkey")
             test_service.create_llama({})
@@ -50,17 +51,17 @@ class TestLlama_(unittest.TestCase):
     @responses.activate
     def test_get_llama_by_id(self):
         # Mock the API response
-        responses.get("http://localhost:8000/llama/2534355165", json={}, status=200)
+        responses.get("http://localhost:8080/llama/8754262976", json={}, status=200)
         # call the method to test
         test_service = Llama("testkey")
-        response = test_service.get_llama_by_id(2534355165)
+        response = test_service.get_llama_by_id(8754262976)
         self.assertEqual(response, {})
         responses.reset(),
 
     @responses.activate
     def test_get_llama_by_id_required_fields_missing(self):
         # Mock the API response
-        responses.get("http://localhost:8000/llama/8702382703", json={}, status=202)
+        responses.get("http://localhost:8080/llama/5891494362", json={}, status=202)
         with self.assertRaises(TypeError):
             test_service = Llama("testkey")
             test_service.get_llama_by_id()
@@ -69,26 +70,26 @@ class TestLlama_(unittest.TestCase):
     @responses.activate
     def test_get_llama_by_id_error_on_non_200(self):
         # Mock the API response
-        responses.get("http://localhost:8000/llama/6160292169", json={}, status=404)
+        responses.get("http://localhost:8080/llama/3645951840", json={}, status=404)
         with self.assertRaises(ClientException):
             test_service = Llama("testkey")
-            test_service.get_llama_by_id(6160292169)
+            test_service.get_llama_by_id(3645951840)
         responses.reset()
 
     @responses.activate
     def test_update_llama(self):
         # Mock the API response
-        responses.put("http://localhost:8000/llama/1905854765", json={}, status=200)
+        responses.put("http://localhost:8080/llama/6078385466", json={}, status=200)
         # call the method to test
         test_service = Llama("testkey")
-        response = test_service.update_llama({}, 1905854765)
+        response = test_service.update_llama({}, 6078385466)
         self.assertEqual(response, {})
         responses.reset(),
 
     @responses.activate
     def test_update_llama_required_fields_missing(self):
         # Mock the API response
-        responses.put("http://localhost:8000/llama/1538563307", json={}, status=202)
+        responses.put("http://localhost:8080/llama/7519949201", json={}, status=202)
         with self.assertRaises(TypeError):
             test_service = Llama("testkey")
             test_service.update_llama()
@@ -97,26 +98,26 @@ class TestLlama_(unittest.TestCase):
     @responses.activate
     def test_update_llama_error_on_non_200(self):
         # Mock the API response
-        responses.put("http://localhost:8000/llama/2867398589", json={}, status=404)
+        responses.put("http://localhost:8080/llama/3916379423", json={}, status=404)
         with self.assertRaises(ClientException):
             test_service = Llama("testkey")
-            test_service.update_llama({}, 2867398589)
+            test_service.update_llama({}, 3916379423)
         responses.reset()
 
     @responses.activate
     def test_delete_llama(self):
         # Mock the API response
-        responses.delete("http://localhost:8000/llama/7001320851", json={}, status=200)
+        responses.delete("http://localhost:8080/llama/8012070750", json={}, status=200)
         # call the method to test
         test_service = Llama("testkey")
-        response = test_service.delete_llama(7001320851)
+        response = test_service.delete_llama(8012070750)
         self.assertEqual(response, {})
         responses.reset(),
 
     @responses.activate
     def test_delete_llama_required_fields_missing(self):
         # Mock the API response
-        responses.delete("http://localhost:8000/llama/3450004469", json={}, status=202)
+        responses.delete("http://localhost:8080/llama/1396326521", json={}, status=202)
         with self.assertRaises(TypeError):
             test_service = Llama("testkey")
             test_service.delete_llama()
@@ -125,10 +126,10 @@ class TestLlama_(unittest.TestCase):
     @responses.activate
     def test_delete_llama_error_on_non_200(self):
         # Mock the API response
-        responses.delete("http://localhost:8000/llama/5838396433", json={}, status=404)
+        responses.delete("http://localhost:8080/llama/4279622959", json={}, status=404)
         with self.assertRaises(ClientException):
             test_service = Llama("testkey")
-            test_service.delete_llama(5838396433)
+            test_service.delete_llama(4279622959)
         responses.reset()
 
 

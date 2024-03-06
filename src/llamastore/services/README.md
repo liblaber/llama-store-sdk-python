@@ -133,7 +133,7 @@ from pprint import pprint
 from llamastore import Llamastore
 sdk = Llamastore()
 sdk.set_access_token(getenv("LLAMASTORE_ACCESS_TOKEN"))
-results = sdk.llama_picture.delete_llama_picture(llama_id = 2)
+results = sdk.llama_picture.delete_llama_picture(llama_id = 1)
 
 pprint(vars(results))
 
@@ -164,7 +164,7 @@ sdk.set_access_token(getenv("LLAMASTORE_ACCESS_TOKEN"))
 request_body = {}
 results = sdk.llama_picture.update_llama_picture(
 	request_input = request_body,
-	llama_id = 1
+	llama_id = 2
 )
 
 pprint(vars(results))
@@ -180,7 +180,7 @@ Create Llama
 **Parameters**
 | Name    | Type| Required | Description |
 | :-------- | :----------| :----------| :----------| 
-| request_input | [LlamaCreate](/src/llamastore/models/README.md#llamacreate) | Required | Request body. |
+| request_input | [CreateLlamaRequest](/src/llamastore/models/README.md#createllamarequest) | Required | Request body. |
 
 **Return Type**
 
@@ -252,7 +252,7 @@ from pprint import pprint
 from llamastore import Llamastore
 sdk = Llamastore()
 sdk.set_access_token(getenv("LLAMASTORE_ACCESS_TOKEN"))
-results = sdk.llama.get_llama_by_id(llama_id = 1)
+results = sdk.llama.get_llama_by_id(llama_id = 2)
 
 pprint(vars(results))
 
@@ -279,7 +279,7 @@ from pprint import pprint
 from llamastore import Llamastore
 sdk = Llamastore()
 sdk.set_access_token(getenv("LLAMASTORE_ACCESS_TOKEN"))
-results = sdk.llama.delete_llama(llama_id = 1)
+results = sdk.llama.delete_llama(llama_id = 2)
 
 pprint(vars(results))
 
@@ -294,7 +294,7 @@ Update Llama
 | Name    | Type| Required | Description |
 | :-------- | :----------| :----------| :----------| 
 | llama_id | int | Required | The llama's ID |
-| request_input | [LlamaCreate](/src/llamastore/models/README.md#llamacreate) | Required | Request body. |
+| request_input | [UpdateLlamaRequest](/src/llamastore/models/README.md#updatellamarequest) | Required | Request body. |
 
 **Return Type**
 
@@ -331,7 +331,7 @@ Create Api Token
 **Parameters**
 | Name    | Type| Required | Description |
 | :-------- | :----------| :----------| :----------| 
-| request_input | [ApiTokenRequest](/src/llamastore/models/README.md#apitokenrequest) | Required | Request body. |
+| request_input | [CreateApiTokenRequest](/src/llamastore/models/README.md#createapitokenrequest) | Required | Request body. |
 
 **Return Type**
 
@@ -376,7 +376,7 @@ from pprint import pprint
 from llamastore import Llamastore
 sdk = Llamastore()
 sdk.set_access_token(getenv("LLAMASTORE_ACCESS_TOKEN"))
-results = sdk.user.get_user_by_email(email = 'tIAimCb@N.sUaR].pV')
+results = sdk.user.get_user_by_email(email = '@@X`.I5>3rbU6+\')
 
 pprint(vars(results))
 
@@ -390,7 +390,7 @@ Register User
 **Parameters**
 | Name    | Type| Required | Description |
 | :-------- | :----------| :----------| :----------| 
-| request_input | [UserRegistration](/src/llamastore/models/README.md#userregistration) | Required | Request body. |
+| request_input | [RegisterUserRequest](/src/llamastore/models/README.md#registeruserrequest) | Required | Request body. |
 
 **Return Type**
 

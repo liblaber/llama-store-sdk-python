@@ -8,8 +8,8 @@ class TestLlamaIdModel(unittest.TestCase):
 
     def test_llama_id(self):
         # Create LlamaId class instance
-        test_model = LlamaId(id=9)
-        self.assertEqual(test_model.id, 9)
+        test_model = LlamaId(id=4)
+        self.assertEqual(test_model.id, 4)
 
     def test_llama_id_required_fields_missing(self):
         # Assert LlamaId class generation fails without required fields

@@ -5,6 +5,8 @@ from json import JSONDecodeError
 from .http_content_types import multipart_form_data_request
 from .utils import to_serialize
 
+from ..hooks.hook import CustomHook, Request, Response
+
 
 class HTTPClient:
     """
@@ -40,8 +42,8 @@ class HTTPClient:
         """
         request_method = getattr(requests, method)
         serialized_body = to_serialize(body_input)
-        if "Content-type" in headers:
-            data_type, subtype = headers["Content-type"].split("/")
+        if "Content-Type" in headers:
+            data_type, subtype = headers["Content-Type"].split("/")
             if data_type == "multipart":
                 return multipart_form_data_request(
                     method, endpoint_url, headers, serialized_body
@@ -68,6 +70,10 @@ class HTTPClient:
                 A boolean representing wether to attempt a retry
         """
 
+        hook_request = Request("delete", endpoint_url, headers)
+        self._hook.before_request(hook_request)
+        headers.update(**hook_request.headers)
+
         response = self._make_http_request("delete", endpoint_url, headers, None)
         if response.status_code in self._retry_codes and retry:
             try_cnt = 1
@@ -80,6 +86,15 @@ class HTTPClient:
                     "delete", endpoint_url, headers, None
                 )
                 try_cnt += 1
+
+        hook_response = Response(response.status_code, response.headers, response.text)
+        self._hook.after_response(hook_request, hook_response)
+
+        if 400 <= response.status_code < 500:
+            try:
+                self._raise_from_status(response)
+            except Exception as e:
+                self._hook.on_error(e, hook_request, hook_response)
 
         return self._handle_response(response)
 
@@ -97,6 +112,10 @@ class HTTPClient:
                 A boolean representing wether to attempt a retry
         """
 
+        hook_request = Request("get", endpoint_url, headers)
+        self._hook.before_request(hook_request)
+        headers.update(**hook_request.headers)
+
         response = self._make_http_request("get", endpoint_url, headers, None)
         if response.status_code in self._retry_codes and retry:
             try_cnt = 1
@@ -107,6 +126,15 @@ class HTTPClient:
                 sleep(self._initial_delay ** (try_cnt - 1) / 1000)
                 response = self._make_http_request("get", endpoint_url, headers, None)
                 try_cnt += 1
+
+        hook_response = Response(response.status_code, response.headers, response.text)
+        self._hook.after_response(hook_request, hook_response)
+
+        if 400 <= response.status_code < 500:
+            try:
+                self._raise_from_status(response)
+            except Exception as e:
+                self._hook.on_error(e, hook_request, hook_response)
 
         return self._handle_response(response)
 
@@ -126,7 +154,14 @@ class HTTPClient:
                 A boolean representing wether to attempt a retry
         """
 
-        response = self._make_http_request("patch", endpoint_url, headers, body_input)
+        serialized_input = to_serialize(body_input)
+        hook_request = Request("patch", endpoint_url, headers, serialized_input)
+        self._hook.before_request(hook_request)
+        headers.update(**hook_request.headers)
+
+        response = self._make_http_request(
+            "patch", endpoint_url, headers, hook_request.body
+        )
         if response.status_code in self._retry_codes and retry:
             try_cnt = 1
             while (
@@ -135,9 +170,18 @@ class HTTPClient:
             ):
                 sleep(self._initial_delay ** (try_cnt - 1) / 1000)
                 response = self._make_http_request(
-                    "patch", endpoint_url, headers, body_input
+                    "patch", endpoint_url, headers, hook_request.body
                 )
                 try_cnt += 1
+
+        hook_response = Response(response.status_code, response.headers, response.text)
+        self._hook.after_response(hook_request, hook_response)
+
+        if 400 <= response.status_code < 500:
+            try:
+                self._raise_from_status(response)
+            except Exception as e:
+                self._hook.on_error(e, hook_request, hook_response)
 
         return self._handle_response(response)
 
@@ -157,7 +201,14 @@ class HTTPClient:
                 A boolean representing wether to attempt a retry
         """
 
-        response = self._make_http_request("post", endpoint_url, headers, body_input)
+        serialized_input = to_serialize(body_input)
+        hook_request = Request("post", endpoint_url, headers, serialized_input)
+        self._hook.before_request(hook_request)
+        headers.update(**hook_request.headers)
+
+        response = self._make_http_request(
+            "post", endpoint_url, headers, hook_request.body
+        )
         if response.status_code in self._retry_codes and retry:
             try_cnt = 1
             while (
@@ -166,9 +217,18 @@ class HTTPClient:
             ):
                 sleep(self._initial_delay ** (try_cnt - 1) / 1000)
                 response = self._make_http_request(
-                    "post", endpoint_url, headers, body_input
+                    "post", endpoint_url, headers, hook_request.body
                 )
                 try_cnt += 1
+
+        hook_response = Response(response.status_code, response.headers, response.text)
+        self._hook.after_response(hook_request, hook_response)
+
+        if 400 <= response.status_code < 500:
+            try:
+                self._raise_from_status(response)
+            except Exception as e:
+                self._hook.on_error(e, hook_request, hook_response)
 
         return self._handle_response(response)
 
@@ -188,7 +248,14 @@ class HTTPClient:
                 A boolean representing whether to attempt a retry
         """
 
-        response = self._make_http_request("put", endpoint_url, headers, body_input)
+        serialized_input = to_serialize(body_input)
+        hook_request = Request("put", endpoint_url, headers, serialized_input)
+        self._hook.before_request(hook_request)
+        headers.update(**hook_request.headers)
+
+        response = self._make_http_request(
+            "put", endpoint_url, headers, hook_request.body
+        )
         if response.status_code in self._retry_codes and retry:
             try_cnt = 1
             while (
@@ -197,9 +264,18 @@ class HTTPClient:
             ):
                 sleep(self._initial_delay ** (try_cnt - 1) / 1000)
                 response = self._make_http_request(
-                    "put", endpoint_url, headers, body_input
+                    "put", endpoint_url, headers, hook_request.body
                 )
                 try_cnt += 1
+
+        hook_response = Response(response.status_code, response.headers, response.text)
+        self._hook.after_response(hook_request, hook_response)
+
+        if 400 <= response.status_code < 500:
+            try:
+                self._raise_from_status(response)
+            except Exception as e:
+                self._hook.on_error(e, hook_request, hook_response)
 
         return self._handle_response(response)
 
