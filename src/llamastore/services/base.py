@@ -5,10 +5,13 @@ Performs API calls,sets authentication tokens and handles http exceptions.
 Class:
     BaseService
 """
+import platform
 from typing import List, Union
 from enum import Enum
 import re
 from ..net.http_client import HTTPClient
+
+from ..hooks.hook import CustomHook, Request, Response
 
 
 class BaseService:
@@ -30,9 +33,11 @@ class BaseService:
         Sets the base url
     """
 
-    _url_prefix = "http://localhost:8000"
+    _url_prefix = "http://localhost:8080"
 
-    _http = HTTPClient(None)
+    _custom_hook = CustomHook()
+
+    _http = HTTPClient(_custom_hook)
 
     def __init__(self, access_token: str = "") -> None:
         """
@@ -93,6 +98,6 @@ class BaseService:
         headers: dict
             Headers dict to add auth headers to
         """
-        headers["User-Agent"] = "liblab/0.1.20 Llamastore/0.0.1 python/2.7"
+        headers["User-Agent"] = f"Llamastore/0.0.3 Python/{platform.python_version()}"
         headers["Authorization"] = f"Bearer {self._access_token}"
         return headers
