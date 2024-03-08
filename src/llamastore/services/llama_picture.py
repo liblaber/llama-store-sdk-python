@@ -43,7 +43,7 @@ class LlamaPicture(BaseService):
         """
 
         url_endpoint = "/llama/{llama_id}/picture"
-        headers = {"Content-type": "image/png"}
+        headers = {"Content-Type": "image/png"}
         self._add_required_headers(headers)
         if not llama_id:
             raise ValueError(
@@ -73,7 +73,7 @@ class LlamaPicture(BaseService):
         """
 
         url_endpoint = "/llama/{llama_id}/picture"
-        headers = {"Content-type": "image/png"}
+        headers = {"Content-Type": "image/png"}
         self._add_required_headers(headers)
         if not llama_id:
             raise ValueError(

@@ -10,12 +10,12 @@ class TestUserModel(unittest.TestCase):
         # Create User class instance
         test_model = User(
             id=9,
-            email="EB2@5:mAuV^xcS'8PD*NZ7:V<;9As(D5 uEp_Tu~KOEt*yQMFM2R%;<)Tp/zlfKW:d>?SNSx9,.Fw-5U9>l~00_(wRK;olD-_2j!w_Dy`h.%%%l+B6II-j6qM(bdVaNb/=}g3^\\RL<e-n5I u;wM W5<;,o-e#$,68jt]0v;,p4Fo",
+            email='e#[RBr1KNs~{GA\'/Qp >g!"M]!FS/42[b*WW~KP=sLT%."J\'J6&:9f@KF<[?YIFUJ*$@e:(Nk!#Mf_gu\\>iJf4.:n]5\\B(9>|Lm\\s)F^x1q4q>s$JHLpA&Hx" g&h2qw$A6Z)yRpvQ8)h:l^r9D75S8',
         )
         self.assertEqual(test_model.id, 9)
         self.assertEqual(
             test_model.email,
-            "EB2@5:mAuV^xcS'8PD*NZ7:V<;9As(D5 uEp_Tu~KOEt*yQMFM2R%;<)Tp/zlfKW:d>?SNSx9,.Fw-5U9>l~00_(wRK;olD-_2j!w_Dy`h.%%%l+B6II-j6qM(bdVaNb/=}g3^\\RL<e-n5I u;wM W5<;,o-e#$,68jt]0v;,p4Fo",
+            'e#[RBr1KNs~{GA\'/Qp >g!"M]!FS/42[b*WW~KP=sLT%."J\'J6&:9f@KF<[?YIFUJ*$@e:(Nk!#Mf_gu\\>iJf4.:n]5\\B(9>|Lm\\s)F^x1q4q>s$JHLpA&Hx" g&h2qw$A6Z)yRpvQ8)h:l^r9D75S8',
         )
 
     def test_user_required_fields_missing(self):
