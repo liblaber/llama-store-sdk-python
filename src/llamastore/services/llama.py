@@ -3,7 +3,8 @@ from ..net import query_serializer
 from .base import BaseService
 from ..models.GetLlamasResponse import GetLlamasResponse as GetLlamasResponseModel
 from ..models.Llama import Llama as LlamaModel
-from ..models.LlamaCreate import LlamaCreate as LlamaCreateModel
+from ..models.CreateLlamaRequest import CreateLlamaRequest as CreateLlamaRequestModel
+from ..models.UpdateLlamaRequest import UpdateLlamaRequest as UpdateLlamaRequestModel
 
 
 class Llama(BaseService):
@@ -22,13 +23,13 @@ class Llama(BaseService):
             return [LlamaModel(**model) for model in res]
         return res
 
-    def create_llama(self, request_input: LlamaCreateModel) -> LlamaModel:
+    def create_llama(self, request_input: CreateLlamaRequestModel) -> LlamaModel:
         """
         Create Llama
         """
 
         url_endpoint = "/llama"
-        headers = {"Content-type": "application/json"}
+        headers = {"Content-Type": "application/json"}
         self._add_required_headers(headers)
 
         final_url = self._url_prefix + url_endpoint
@@ -66,7 +67,7 @@ class Llama(BaseService):
         return res
 
     def update_llama(
-        self, request_input: LlamaCreateModel, llama_id: int
+        self, request_input: UpdateLlamaRequestModel, llama_id: int
     ) -> LlamaModel:
         """
         Update Llama
@@ -77,7 +78,7 @@ class Llama(BaseService):
         """
 
         url_endpoint = "/llama/{llama_id}"
-        headers = {"Content-type": "application/json"}
+        headers = {"Content-Type": "application/json"}
         self._add_required_headers(headers)
         if not llama_id:
             raise ValueError(

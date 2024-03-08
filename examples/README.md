@@ -5,7 +5,7 @@ A basic example of how to use the llamastore package.
 
 If `llamastore` is published to pypi:
 ```sh
-pip install llamastore==0.0.1
+pip install llamastore==0.0.3
 ```
 
 In the event `llamastore` is not published to pypi, you can install it locally by running the following command in the example folder:

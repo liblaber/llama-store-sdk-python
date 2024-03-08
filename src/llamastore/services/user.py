@@ -2,7 +2,7 @@ from urllib.parse import quote
 from ..net import query_serializer
 from .base import BaseService
 from ..models.User import User as UserModel
-from ..models.UserRegistration import UserRegistration as UserRegistrationModel
+from ..models.RegisterUserRequest import RegisterUserRequest as RegisterUserRequestModel
 
 
 class User(BaseService):
@@ -37,13 +37,13 @@ class User(BaseService):
             return UserModel(**res)
         return res
 
-    def register_user(self, request_input: UserRegistrationModel) -> UserModel:
+    def register_user(self, request_input: RegisterUserRequestModel) -> UserModel:
         """
         Register User
         """
 
         url_endpoint = "/user"
-        headers = {"Content-type": "application/json"}
+        headers = {"Content-Type": "application/json"}
         self._add_required_headers(headers)
 
         final_url = self._url_prefix + url_endpoint

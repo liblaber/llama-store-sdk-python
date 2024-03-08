@@ -3,6 +3,7 @@ import responses
 from src.llamastore.net.http_client import HTTPClient
 from http_exceptions import ClientException
 from src.llamastore.services.user import User
+from src.llamastore.hooks.hook import CustomHook
 
 
 class TestUser_(unittest.TestCase):
@@ -13,14 +14,14 @@ class TestUser_(unittest.TestCase):
     def test_get_user_by_email(self):
         # Mock the API response
         responses.get(
-            'http://localhost:8000/user/ZSE4%:SX?336qK@1B4/-ffLtkh+7m"4j5K1n{f<H)o|~I~-H;9ZX3YK0B\\BjFK6%+ZOjKd$^2CTb];%`Mc"CI${$o4M@E#Q\\6t3s$jAj4:WR9TTNa\'1PGfY3~j!b9:x.KZsW2)v',
+            "http://localhost:8080/user/\"&N~i>zl=[FU$qpKbwx>q& SAn'eP0aXzs4@<,OAV8Mh>QQk_7F6(%>&[[K%r\\<sc>.(]]%xSti",
             json={},
             status=200,
         )
         # call the method to test
         test_service = User("testkey")
         response = test_service.get_user_by_email(
-            'ZSE4%:SX?336qK@1B4/-ffLtkh+7m"4j5K1n{f<H)o|~I~-H;9ZX3YK0B\\BjFK6%+ZOjKd$^2CTb];%`Mc"CI${$o4M@E#Q\\6t3s$jAj4:WR9TTNa\'1PGfY3~j!b9:x.KZsW2)v'
+            "\"&N~i>zl=[FU$qpKbwx>q& SAn'eP0aXzs4@<,OAV8Mh>QQk_7F6(%>&[[K%r\\<sc>.(]]%xSti"
         )
         self.assertEqual(response, {})
         responses.reset(),
@@ -29,7 +30,7 @@ class TestUser_(unittest.TestCase):
     def test_get_user_by_email_required_fields_missing(self):
         # Mock the API response
         responses.get(
-            "http://localhost:8000/user/O<{Ig?DVYV7lz_.eus,PVx<oL8!A{cL;LUAeivT+uI2<T2N/L<Vveud`jMf`U,%UFc5&?F9UZuhe*^T< @sU[G,'!\">]0Y6z+N*d]M;x=hgbCxi^S)H1S.]viU,-rdSyB+X\\qI?5+]fLoO/1|;\\%dny\\-zFid*O3",
+            "http://localhost:8080/user/U0klHb;l(T1\\%eCf(,&6D~!ZeM,WHdQbkRj:gV@F|86|qNA!Tu:zazt'ekR$q| ZO +P&%qNp;+]an(ea j&<f[8}!y~(k27k#|7',/]N_OK=s~A.g8=g SK6n.kMubK.f2r!sWZ7]^*mJeJ2d >,gG$oPl{B#7d^>hd%/vkKWFyafj21",
             json={},
             status=202,
         )
@@ -42,21 +43,21 @@ class TestUser_(unittest.TestCase):
     def test_get_user_by_email_error_on_non_200(self):
         # Mock the API response
         responses.get(
-            'http://localhost:8000/user/~jB"q6vYt!DhxoaS1ZLnHeYK\\XIo,$[FHc"1[[C1E@$5{?eohK7&?>=;0q^bJ5D8LQ!_Q6n/4FRcY 6MrPI\\0!a0zv<`O~;)_AE#HyzOKrmnvv-@d5nI`O.4&Tx* ,e./user/P2D:~P3(c=]bG{V "@/d;%{fXfqy)Ct`Cyd>%tPq+)pxYz}jc46_>+hkZp ++%2,+f%h8s#`Ke[Q_|y[',
+            "http://localhost:8080/user/8#n!+$_}')U(D kR)\\2!N_Nx@5h%$}f/POdYLpRx_X(`M\\OFf|?YA'nWo`v~etJFfqIR?K8:ylc@boit(%'4+@.L9-zcwi8E>?sb:BtH`&\\~/5jAWZY.g&crPY:diHr<Bz`4IGw4:*QI: LLyzM~{4? -YjfhM?&$YMh_uQP~e20&,+m}U`K8/TqumCubiy};/ZUD(mQD*O1",
             json={},
             status=404,
         )
         with self.assertRaises(ClientException):
             test_service = User("testkey")
             test_service.get_user_by_email(
-                '~jB"q6vYt!DhxoaS1ZLnHeYK\\XIo,$[FHc"1[[C1E@$5{?eohK7&?>=;0q^bJ5D8LQ!_Q6n/4FRcY 6MrPI\\0!a0zv<`O~;)_AE#HyzOKrmnvv-@d5nI`O.4&Tx* ,e.$`P2D:~P3(c=]bG{V "@/d;%{fXfqy)Ct`Cyd>%tPq+)pxYz}jc46_>+hkZp ++%2,+f%h8s#`Ke[Q_|y['
+                "8#n!+$_}')U(D kR)\\2!N_Nx@5h%$}f/POdYLpRx_X(`M\\OFf|?YA'nWo`v~etJFfqIR?K8:ylc@boit(%'4+@.L9-zcwi8E>?sb:BtH`&\\~/5jAWZY.g&crPY:diHr<Bz`4IGw4:*QI: LLyzM~{4? -YjfhM?&$YMh_uQP~e20&,+m}U`K8/TqumCubiy};/ZUD(mQD*O1"
             )
         responses.reset()
 
     @responses.activate
     def test_register_user(self):
         # Mock the API response
-        responses.post("http://localhost:8000/user", json={}, status=200)
+        responses.post("http://localhost:8080/user", json={}, status=200)
         # call the method to test
         test_service = User("testkey")
         response = test_service.register_user({})
@@ -66,7 +67,7 @@ class TestUser_(unittest.TestCase):
     @responses.activate
     def test_register_user_error_on_non_200(self):
         # Mock the API response
-        responses.post("http://localhost:8000/user", json={}, status=404)
+        responses.post("http://localhost:8080/user", json={}, status=404)
         with self.assertRaises(ClientException):
             test_service = User("testkey")
             test_service.register_user({})

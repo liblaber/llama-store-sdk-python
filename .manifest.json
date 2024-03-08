@@ -1,0 +1,147 @@
+{
+  "liblabVersion": "1.1.40",
+  "date": "2024-03-08T16:12:00.742Z",
+  "config": {
+    "authentication": {
+      "access": {
+        "prefix": "Bearer"
+      }
+    },
+    "deliveryType": "zip",
+    "languages": [
+      "python"
+    ],
+    "inputFileName": "/tmp/resources/spec/open-api-spec.json",
+    "environmentVariables": [],
+    "fileOutput": "/tmp",
+    "tempDir": "/tmp/liblab-codegen-1.1.40-wCBJBm",
+    "inferServiceNames": false,
+    "httpLibrary": {
+      "name": "axios",
+      "packages": {
+        "axios": "^1.0.0"
+      },
+      "languages": [
+        "javascript",
+        "typescript"
+      ]
+    },
+    "auth": [
+      "bearer"
+    ],
+    "privateRepo": false,
+    "githubRef": "",
+    "baseUrl": "http://localhost:8080",
+    "sdkName": "Llamastore",
+    "sdkVersion": "0.0.3",
+    "retry": {
+      "enabled": true,
+      "maxAttempts": 3,
+      "retryDelay": 150
+    },
+    "customQueries": {
+      "paths": [],
+      "rawQueries": [],
+      "queriesData": []
+    },
+    "generateEnv": true,
+    "license": {
+      "type": "MIT",
+      "name": "MIT",
+      "url": "https://opensource.org/licenses/MIT"
+    },
+    "alwaysInitializeOptionals": true,
+    "pypiPackageName": "LlamaStore",
+    "environments": [],
+    "reservedKeywords": {},
+    "deliveryMethods": [],
+    "bundle": false,
+    "exportClassDefault": false,
+    "responseHeaders": false,
+    "renameIllegalModelProperties": false,
+    "devContainer": true,
+    "strictVersion": false,
+    "authors": [],
+    "classifiers": [],
+    "projectUrls": {},
+    "homepage": "",
+    "enforceRequestValidation": false,
+    "denoteCommon": false,
+    "includeOptionalSnippetParameters": true,
+    "hooks": {
+      "enabled": true,
+      "sourceDir": "/tmp/resources/hooks"
+    },
+    "spec": {
+      "type": "openapi",
+      "version": "3.1"
+    },
+    "usesFormData": false
+  },
+  "files": [
+    ".devcontainer/devcontainer.json",
+    ".env.example",
+    ".gitignore",
+    "LICENSE",
+    "README.md",
+    "examples/.env.example",
+    "examples/README.md",
+    "examples/install.cmd",
+    "examples/install.sh",
+    "examples/install_py3.sh",
+    "examples/sample.py",
+    "install.cmd",
+    "install.sh",
+    "pyproject.toml",
+    "requirements.txt",
+    "src/llamastore/README.md",
+    "src/llamastore/__init__.py",
+    "src/llamastore/hooks/__init__.py",
+    "src/llamastore/hooks/hook.py",
+    "src/llamastore/models/ApiToken.py",
+    "src/llamastore/models/CreateApiTokenRequest.py",
+    "src/llamastore/models/CreateLlamaRequest.py",
+    "src/llamastore/models/GetLlamasResponse.py",
+    "src/llamastore/models/Llama.py",
+    "src/llamastore/models/LlamaColor.py",
+    "src/llamastore/models/LlamaId.py",
+    "src/llamastore/models/README.md",
+    "src/llamastore/models/RegisterUserRequest.py",
+    "src/llamastore/models/UpdateLlamaRequest.py",
+    "src/llamastore/models/User.py",
+    "src/llamastore/models/__init__.py",
+    "src/llamastore/models/base.py",
+    "src/llamastore/net/__init__.py",
+    "src/llamastore/net/environment.py",
+    "src/llamastore/net/http_client.py",
+    "src/llamastore/net/http_content_types.py",
+    "src/llamastore/net/query_serializer.py",
+    "src/llamastore/net/utils.py",
+    "src/llamastore/sdk.py",
+    "src/llamastore/services/README.md",
+    "src/llamastore/services/__init__.py",
+    "src/llamastore/services/base.py",
+    "src/llamastore/services/llama.py",
+    "src/llamastore/services/llama_picture.py",
+    "src/llamastore/services/token.py",
+    "src/llamastore/services/user.py",
+    "src/llamastore/setup.py",
+    "test/__init__.py",
+    "test/models/__init__.py",
+    "test/models/test_api_token.py",
+    "test/models/test_base.py",
+    "test/models/test_create_api_token_request.py",
+    "test/models/test_create_llama_request.py",
+    "test/models/test_llama.py",
+    "test/models/test_llama_id.py",
+    "test/models/test_register_user_request.py",
+    "test/models/test_update_llama_request.py",
+    "test/models/test_user.py",
+    "test/services/__init__.py",
+    "test/services/test_base.py",
+    "test/services/test_llama.py",
+    "test/services/test_llama_picture.py",
+    "test/services/test_token.py",
+    "test/services/test_user.py"
+  ]
+}

@@ -1,18 +1,22 @@
 from urllib.parse import quote
 
 from .base import BaseService
-from ..models.ApiTokenRequest import ApiTokenRequest as ApiTokenRequestModel
+from ..models.CreateApiTokenRequest import (
+    CreateApiTokenRequest as CreateApiTokenRequestModel,
+)
 from ..models.ApiToken import ApiToken as ApiTokenModel
 
 
 class Token(BaseService):
-    def create_api_token(self, request_input: ApiTokenRequestModel) -> ApiTokenModel:
+    def create_api_token(
+        self, request_input: CreateApiTokenRequestModel
+    ) -> ApiTokenModel:
         """
         Create Api Token
         """
 
         url_endpoint = "/token"
-        headers = {"Content-type": "application/json"}
+        headers = {"Content-Type": "application/json"}
         self._add_required_headers(headers)
 
         final_url = self._url_prefix + url_endpoint
