@@ -8,12 +8,12 @@ class TestLlamaModel(unittest.TestCase):
 
     def test_llama(self):
         # Create Llama class instance
-        test_model = Llama(id=3, rating=4, color="brown", age=8, name="iste")
-        self.assertEqual(test_model.id, 3)
-        self.assertEqual(test_model.rating, 4)
+        test_model = Llama(id=6, rating=5, color="brown", age=7, name="omnis")
+        self.assertEqual(test_model.id, 6)
+        self.assertEqual(test_model.rating, 5)
         self.assertEqual(test_model.color, "brown")
-        self.assertEqual(test_model.age, 8)
-        self.assertEqual(test_model.name, "iste")
+        self.assertEqual(test_model.age, 7)
+        self.assertEqual(test_model.name, "omnis")
 
     def test_llama_required_fields_missing(self):
         # Assert Llama class generation fails without required fields
