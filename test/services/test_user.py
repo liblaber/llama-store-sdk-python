@@ -3,6 +3,7 @@ import responses
 from src.llamastore.net.http_client import HTTPClient
 from http_exceptions import ClientException
 from src.llamastore.services.user import User
+from src.llamastore.hooks.hook import CustomHook
 
 
 class TestUser_(unittest.TestCase):
@@ -13,14 +14,14 @@ class TestUser_(unittest.TestCase):
     def test_get_user_by_email(self):
         # Mock the API response
         responses.get(
-            'http://localhost:8000/user/ZSE4%:SX?336qK@1B4/-ffLtkh+7m"4j5K1n{f<H)o|~I~-H;9ZX3YK0B\\BjFK6%+ZOjKd$^2CTb];%`Mc"CI${$o4M@E#Q\\6t3s$jAj4:WR9TTNa\'1PGfY3~j!b9:x.KZsW2)v',
+            'http://localhost:8080/user/%tD_W5RfO~{Ehg?>R:cRC3}dW$F!\\"z+{I@iH"i%B>B^w.OY&Azw@S9(X=dawe` P,p<a7NK`U Pv3B0k3n[Sa&{FDKPOCe(\'s(x6bhgQ#^ygN6g40P?~"sZSGCA7oGI>t"~#q5|O"|~.KgRW-J4t7KM[XGE/<7{e\\yQXGP:tq?gN',
             json={},
             status=200,
         )
         # call the method to test
         test_service = User("testkey")
         response = test_service.get_user_by_email(
-            'ZSE4%:SX?336qK@1B4/-ffLtkh+7m"4j5K1n{f<H)o|~I~-H;9ZX3YK0B\\BjFK6%+ZOjKd$^2CTb];%`Mc"CI${$o4M@E#Q\\6t3s$jAj4:WR9TTNa\'1PGfY3~j!b9:x.KZsW2)v'
+            '%tD_W5RfO~{Ehg?>R:cRC3}dW$F!\\"z+{I@iH"i%B>B^w.OY&Azw@S9(X=dawe` P,p<a7NK`U Pv3B0k3n[Sa&{FDKPOCe(\'s(x6bhgQ#^ygN6g40P?~"sZSGCA7oGI>t"~#q5|O"|~.KgRW-J4t7KM[XGE/<7{e\\yQXGP:tq?gN'
         )
         self.assertEqual(response, {})
         responses.reset(),
@@ -29,7 +30,7 @@ class TestUser_(unittest.TestCase):
     def test_get_user_by_email_required_fields_missing(self):
         # Mock the API response
         responses.get(
-            "http://localhost:8000/user/O<{Ig?DVYV7lz_.eus,PVx<oL8!A{cL;LUAeivT+uI2<T2N/L<Vveud`jMf`U,%UFc5&?F9UZuhe*^T< @sU[G,'!\">]0Y6z+N*d]M;x=hgbCxi^S)H1S.]viU,-rdSyB+X\\qI?5+]fLoO/1|;\\%dny\\-zFid*O3",
+            'http://localhost:8080/user/VP@?_5vt;7;qmB2C2v7EX%3aCxn6rqd.%cR[Z4A&f39D%c?ey>a&tl99lgiqo@x%:OfZO RK0@ApoWU!E#B0+"VhdL590,qVa8=%-OabjrIn$<eBam/Mbl]C8C.[T;^%G2\\D4~RqxY#&%QPP^#oataywCv1YpjE}L%B?wMhl>rVce\\A2NK:MBL9.;w0d !@CEY+HF',
             json={},
             status=202,
         )
@@ -42,21 +43,21 @@ class TestUser_(unittest.TestCase):
     def test_get_user_by_email_error_on_non_200(self):
         # Mock the API response
         responses.get(
-            'http://localhost:8000/user/~jB"q6vYt!DhxoaS1ZLnHeYK\\XIo,$[FHc"1[[C1E@$5{?eohK7&?>=;0q^bJ5D8LQ!_Q6n/4FRcY 6MrPI\\0!a0zv<`O~;)_AE#HyzOKrmnvv-@d5nI`O.4&Tx* ,e./user/P2D:~P3(c=]bG{V "@/d;%{fXfqy)Ct`Cyd>%tPq+)pxYz}jc46_>+hkZp ++%2,+f%h8s#`Ke[Q_|y[',
+            "http://localhost:8080/user/N]OuG4fjS1Ry8m%b>twb5'Tb$aL@ubIWa3o3e;GRycTlzJSY%Z`Gpfnfw.)S6}K\\FJ,fN7WZ3JZ3s&dtK3{zWo5*",
             json={},
             status=404,
         )
         with self.assertRaises(ClientException):
             test_service = User("testkey")
             test_service.get_user_by_email(
-                '~jB"q6vYt!DhxoaS1ZLnHeYK\\XIo,$[FHc"1[[C1E@$5{?eohK7&?>=;0q^bJ5D8LQ!_Q6n/4FRcY 6MrPI\\0!a0zv<`O~;)_AE#HyzOKrmnvv-@d5nI`O.4&Tx* ,e.$`P2D:~P3(c=]bG{V "@/d;%{fXfqy)Ct`Cyd>%tPq+)pxYz}jc46_>+hkZp ++%2,+f%h8s#`Ke[Q_|y['
+                "N]OuG4fjS1Ry8m%b>twb5'Tb$aL@ubIWa3o3e;GRycTlzJSY%Z`Gpfnfw.)S6}K\\FJ,fN7WZ3JZ3s&dtK3{zWo5*"
             )
         responses.reset()
 
     @responses.activate
     def test_register_user(self):
         # Mock the API response
-        responses.post("http://localhost:8000/user", json={}, status=200)
+        responses.post("http://localhost:8080/user", json={}, status=200)
         # call the method to test
         test_service = User("testkey")
         response = test_service.register_user({})
@@ -66,7 +67,7 @@ class TestUser_(unittest.TestCase):
     @responses.activate
     def test_register_user_error_on_non_200(self):
         # Mock the API response
-        responses.post("http://localhost:8000/user", json={}, status=404)
+        responses.post("http://localhost:8080/user", json={}, status=404)
         with self.assertRaises(ClientException):
             test_service = User("testkey")
             test_service.register_user({})
